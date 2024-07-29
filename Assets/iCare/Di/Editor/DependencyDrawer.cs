@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace iCare.Editor {
+namespace iCare.Di.Editor {
     [CustomPropertyDrawer(typeof(Dependency<>))]
     public sealed class DependencyDrawer : PropertyDrawer {
         // ReSharper disable once Unity.RedundantSerializeFieldAttribute
@@ -28,6 +28,10 @@ namespace iCare.Editor {
                 EditorGUI.DrawRect(new Rect(position.x, position.y, position.width, LINE_HEIGHT), new Color(0.25f, 0.52f, 0.12f, 0.5f));
                 GUI.DrawTexture(new Rect(position.x, position.y, ICON_SIZE, ICON_SIZE), icon);
             }
+            
+            //Get main class that implements this
+            var mainObj = property.serializedObject.targetObject;
+            var showEnums = mainObj is  MonoBehaviour;
 
             // Adjust positions for the label and fields
             var iconOffset = icon != null ? ICON_SIZE + 2 : 0;
@@ -36,8 +40,12 @@ namespace iCare.Editor {
 
             var isManualFieldRect = new Rect(position.x + labelWidth + fieldWidth - 20 + iconOffset, position.y, 20, LINE_HEIGHT);
             var enumFieldRect = new Rect(isManualFieldRect.x + 20, position.y, fieldWidth, LINE_HEIGHT);
-            EditorGUI.PropertyField(enumFieldRect, _isManualProp.boolValue ? _manualValueProp : _fromProp, GUIContent.none);
-
+            
+            if (_isManualProp.boolValue) {
+                EditorGUI.PropertyField(enumFieldRect, _manualValueProp, GUIContent.none);
+            } else if (showEnums){
+                EditorGUI.PropertyField(enumFieldRect, _fromProp, GUIContent.none);
+            }
             if (fieldGenericType.IsSubclassOf(typeof(Object))) {
                 EditorGUI.PropertyField(isManualFieldRect, _isManualProp, GUIContent.none);
             }

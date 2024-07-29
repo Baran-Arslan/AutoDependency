@@ -5,9 +5,9 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace iCare.Editor {
-    [CustomPropertyDrawer(typeof(Service))]
-    public sealed class ServiceDrawer : PropertyDrawer {
+namespace iCare.Di.Editor {
+    [CustomPropertyDrawer(typeof(ObjectService))]
+    public sealed class ObjectServiceDrawer : PropertyDrawer {
         // ReSharper disable once Unity.RedundantSerializeFieldAttribute
         [SerializeField] Texture2D icon;
 

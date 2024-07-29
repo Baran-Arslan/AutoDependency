@@ -172,16 +172,14 @@ MonoBehaviour:
     manualValue: {fileID: 0}
   cam:
     isManual: 0
-    from: 0
+    from: 2
     manualValue: {fileID: 0}
   service:
     isManual: 0
-    from: 0
+    from: 2
     manualValue:
       gameSpeed: 0
-  serviceField:
-    value: {fileID: 537224855}
-    serviceType: iCare.TestMono, iCare, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  objectServiceField: {value: {fileID: 0}, serviceType: }
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

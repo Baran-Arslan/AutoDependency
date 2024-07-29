@@ -5,28 +5,98 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc37a526-e92c-4f9b-afa9-13cb74976a77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Dependency.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Dependency.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Editor/DependencyDrawer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Editor/DependencyDrawer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Editor/InjectIcon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Editor/InjectIcon.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/ServiceLocator.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Test.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Test.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/TestMono.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/TestMono.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/TestScriptableObj.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/TestScriptableObj.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Core/Extensions/StringExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Core/Extensions/StringExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Core/IDynamicVariable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Core/IDynamicVariable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Core/Validations.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Core/Validations/StringValidations.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Core/Validations/StringValidations.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Demo/InputManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Demo/InputManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Demo/Player.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Demo/Player.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Demo/iCare.Di.Demo.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Demo/iCare.Di.Demo.asmdef.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Demo/iCareDiDemo.unity" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Demo/iCareDiDemo.unity.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Icons.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Icons/InjectionIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Icons/InjectionIcon.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Icons/InstallerIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Icons/InstallerIcon.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/Dependency.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/Dependency.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/GlobalInjector.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/GlobalInjector.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/IConstruct.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/IConstruct.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/LoopSystem.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/LoopSystem/IListenLoop.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/LoopSystem/IListenLoop.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/LoopSystem/LoopProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/LoopSystem/LoopProvider.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ObjectService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ObjectService.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceAttribute.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceAttribute.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceCreator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceCreator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/GameObjectInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/GameObjectInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/GlobalInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/GlobalInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/IInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/IInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/MonoContainer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/MonoContainer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/MonoInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/MonoInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/SceneInstaller.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/SceneInstaller.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/ServiceContainer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/ServiceContainer.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/ServiceLocator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/ServiceLocator/ServiceLocator.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/UnityHelpers.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/UnityHelpers/AddComponentExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/UnityHelpers/AddComponentExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/UnityHelpers/InstantiateExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/UnityHelpers/InstantiateExtensions.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/UnityHelpers/Mono.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/UnityHelpers/Mono.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/iCare.Ref.asmref.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Tests.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Tests/ServiceContainerTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Tests/ServiceContainerTests.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Tests/ServiceLocatorTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Tests/ServiceLocatorTests.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Tests/iCare.Di.Tests.asmdef" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/iCare/Di/Tests/iCare.Di.Tests.asmdef.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AutoDependency/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AutoDependency/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Project/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Project/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Editor/ServiceDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/iCare/Di/Editor/ServiceDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Editor/ServiceDrawer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/iCare/Di/Editor/ServiceDrawer.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Newasdasd.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Newasdasd.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Service.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/iCare/Di/Service.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/TestClass.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/TestClass.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Dependency.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Dependency.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Editor/DependencyDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/iCare/Di/Editor/DependencyDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Editor/InjectIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Editor/InjectIcon.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Editor/ServiceDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/iCare/Di/Editor/ObjectServiceDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Editor/ServiceDrawer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/iCare/Di/Editor/ObjectServiceDrawer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Service.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Service.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/ServiceLocator.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Test.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/Test.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/iCare/Di/Demo.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/TestMono.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/TestMono.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/TestScriptableObj.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/TestScriptableObj.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/iCare.Ref.asmref" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/iCare/Di/Runtime/iCare.Ref.asmref" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/iCare/Di/iCare.Ref.asmref.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCare.Editor.csproj.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/iCare.Editor.csproj.DotSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iCare.csproj.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/iCare.csproj.DotSettings" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,13 +111,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a87366a6dc74b3aa0e0421cf80e3ae51dd000/cd/d25da04c/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cb29ac10eacb4d6aad3fee424867b78d2ac00/7c/cfab77c3/Collider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/cb29ac10eacb4d6aad3fee424867b78d2ac00/83/2e92ade0/Rigidbody.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/iCare/Di/TestMono.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/iCare/Di/Demo/InputManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/iCare/Di/Demo/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal/Runtime/UniversalAdditionalCameraData.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2juftr797Ixfh3JekB91jbfskE7" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -57,28 +128,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Baran\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Baran\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
-      "C:\\Users\\Baran\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Baran\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Baran\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Baran\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.0.12f1\Editor\Unity.exe" />
@@ -125,7 +196,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1722242102903</updated>
-      <workItem from="1722242104603" duration="15391000" />
+      <workItem from="1722242104603" duration="16019000" />
+      <workItem from="1722258998008" duration="3718000" />
+      <workItem from="1722263308959" duration="5691000" />
+      <workItem from="1722270110821" duration="137000" />
+      <workItem from="1722270354123" duration="48000" />
+      <workItem from="1722270444182" duration="3519000" />
     </task>
     <servers />
   </component>
