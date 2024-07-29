@@ -8,6 +8,6 @@ namespace iCare {
         [SerializeField] Object value;
         [SerializeField] string serviceType;
         
-        public string ServiceType => serviceType;
+        
     }
 }

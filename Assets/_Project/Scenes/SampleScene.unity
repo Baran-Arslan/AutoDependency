@@ -127,8 +127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 537224854}
-  - component: {fileID: 537224853}
-  - component: {fileID: 537224856}
+  - component: {fileID: 537224855}
   m_Layer: 0
   m_Name: test
   m_TagString: Untagged
@@ -136,21 +135,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &537224853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537224852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c51872969fb488891c80b6fc4e01052, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  values:
-  - value: {fileID: 0}
-    serviceType: 
 --- !u!4 &537224854
 Transform:
   m_ObjectHideFlags: 0
@@ -166,7 +150,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &537224856
+--- !u!114 &537224855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -175,14 +159,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 537224852}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5dd02a14cf641daa3e6a281d3c311ee, type: 3}
+  m_Script: {fileID: 11500000, guid: aa3a079203884efc9bfc356264b18870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  values:
-  - value: {fileID: 537224853}
-    serviceType: TestClass, iCare, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  - value: {fileID: 537224853}
-    serviceType: TestClass, iCare, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  rb:
+    isManual: 0
+    from: 2
+    manualValue: {fileID: 0}
+  tr:
+    isManual: 0
+    from: 2
+    manualValue: {fileID: 0}
+  cam:
+    isManual: 0
+    from: 0
+    manualValue: {fileID: 0}
+  service:
+    isManual: 0
+    from: 0
+    manualValue:
+      gameSpeed: 0
+  serviceField:
+    value: {fileID: 537224855}
+    serviceType: iCare.TestMono, iCare, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

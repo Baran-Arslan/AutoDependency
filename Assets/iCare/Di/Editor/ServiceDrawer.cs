@@ -8,22 +8,47 @@ using Object = UnityEngine.Object;
 namespace iCare.Editor {
     [CustomPropertyDrawer(typeof(Service))]
     public sealed class ServiceDrawer : PropertyDrawer {
+        // ReSharper disable once Unity.RedundantSerializeFieldAttribute
+        [SerializeField] Texture2D icon;
+
         const float TYPE_SELECTOR_WIDTH_RATIO = 0.3f;
+        const float ICON_SIZE = 17f;
+
+        SerializedProperty _valueProp;
+        SerializedProperty _serviceTypeProp;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
             EditorGUI.BeginProperty(position, label, property);
 
             var (valueRect, typeRect) = SplitRect(position);
-            var valueProp = property.FindPropertyRelative("value");
-            var serviceTypeProp = property.FindPropertyRelative("serviceType");
+            GetProperties(property);
 
-            DrawValueField(valueRect, valueProp, serviceTypeProp);
-            DrawTypeSelector(typeRect, valueProp, serviceTypeProp);
+            if (icon != null) {
+                GUI.DrawTexture(new Rect(position.x, position.y, ICON_SIZE, ICON_SIZE), icon);
+            }
 
-            if (valueProp.objectReferenceValue == null && !string.IsNullOrEmpty(serviceTypeProp.stringValue))
-                serviceTypeProp.stringValue = string.Empty;
+            // Adjust the position of other elements to account for the icon
+            var iconOffset = icon != null ? ICON_SIZE + 2 : 0;
+            valueRect.x += iconOffset;
+            valueRect.width -= iconOffset;
+            typeRect.x += iconOffset;
+            typeRect.width -= iconOffset;
+
+            DrawValueField(valueRect, _valueProp, _serviceTypeProp);
+            DrawTypeSelector(typeRect, _valueProp, _serviceTypeProp);
+            ValidateTypeString();
 
             EditorGUI.EndProperty();
+        }
+
+        void ValidateTypeString() {
+            if (_valueProp.objectReferenceValue.IsUnityNull() && !string.IsNullOrEmpty(_serviceTypeProp.stringValue))
+                _serviceTypeProp.stringValue = string.Empty;
+        }
+
+        void GetProperties(SerializedProperty property) {
+            _valueProp = property.FindPropertyRelative("value");
+            _serviceTypeProp = property.FindPropertyRelative("serviceType");
         }
 
         static (Rect valueRect, Rect typeRect) SplitRect(Rect position) {
@@ -83,31 +108,34 @@ namespace iCare.Editor {
             if (!typeof(Component).IsAssignableFrom(newType) && newType != typeof(GameObject)) {
                 return;
             }
+
             var currentObject = valueProp.objectReferenceValue;
             if (currentObject == null) {
-                return; 
+                return;
             }
 
             if (currentObject is GameObject gameObject) {
                 if (newType == typeof(GameObject)) {
-                    valueProp.objectReferenceValue = gameObject; // Just set the GameObject itself.
-                } else {
+                    valueProp.objectReferenceValue = gameObject;
+                }
+                else {
                     var component = gameObject.GetComponent(newType);
                     if (component != null) {
-                        valueProp.objectReferenceValue = component; // Set the component if found.
+                        valueProp.objectReferenceValue = component;
                     }
                 }
-            } else if (currentObject is Component component) {
+            }
+            else if (currentObject is Component component) {
                 if (newType == typeof(GameObject)) {
-                    valueProp.objectReferenceValue = component.gameObject; // Set the GameObject from the component.
-                } else {
+                    valueProp.objectReferenceValue = component.gameObject;
+                }
+                else {
                     var newComponent = component.GetComponent(newType);
                     if (newComponent != null) {
-                        valueProp.objectReferenceValue = newComponent; // Set the new component if found.
+                        valueProp.objectReferenceValue = newComponent;
                     }
                 }
             }
         }
-
     }
 }
