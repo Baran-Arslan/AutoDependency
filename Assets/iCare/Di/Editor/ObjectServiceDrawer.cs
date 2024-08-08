@@ -8,14 +8,11 @@ using Object = UnityEngine.Object;
 namespace iCare.Di.Editor {
     [CustomPropertyDrawer(typeof(ObjectService))]
     public sealed class ObjectServiceDrawer : PropertyDrawer {
-        // ReSharper disable once Unity.RedundantSerializeFieldAttribute
-        [SerializeField] Texture2D icon;
-
         const float TYPE_SELECTOR_WIDTH_RATIO = 0.3f;
         const float ICON_SIZE = 17f;
-
-        SerializedProperty _valueProp;
+        
         SerializedProperty _serviceTypeProp;
+        SerializedProperty _valueProp;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
             EditorGUI.BeginProperty(position, label, property);
@@ -23,9 +20,8 @@ namespace iCare.Di.Editor {
             var (valueRect, typeRect) = SplitRect(position);
             GetProperties(property);
 
-            if (icon != null) {
-                GUI.DrawTexture(new Rect(position.x, position.y, ICON_SIZE, ICON_SIZE), icon);
-            }
+            var icon = Textures2D.InjectionIconTexture.Get();
+            if (icon != null) GUI.DrawTexture(new Rect(position.x, position.y, ICON_SIZE, ICON_SIZE), icon);
 
             // Adjust the position of other elements to account for the icon
             var iconOffset = icon != null ? ICON_SIZE + 2 : 0;
@@ -105,14 +101,10 @@ namespace iCare.Di.Editor {
         }
 
         static void SetValueToType(SerializedProperty valueProp, Type newType) {
-            if (!typeof(Component).IsAssignableFrom(newType) && newType != typeof(GameObject)) {
-                return;
-            }
+            if (!typeof(Component).IsAssignableFrom(newType) && newType != typeof(GameObject)) return;
 
             var currentObject = valueProp.objectReferenceValue;
-            if (currentObject == null) {
-                return;
-            }
+            if (currentObject == null) return;
 
             if (currentObject is GameObject gameObject) {
                 if (newType == typeof(GameObject)) {
@@ -120,9 +112,7 @@ namespace iCare.Di.Editor {
                 }
                 else {
                     var component = gameObject.GetComponent(newType);
-                    if (component != null) {
-                        valueProp.objectReferenceValue = component;
-                    }
+                    if (component != null) valueProp.objectReferenceValue = component;
                 }
             }
             else if (currentObject is Component component) {
@@ -131,9 +121,7 @@ namespace iCare.Di.Editor {
                 }
                 else {
                     var newComponent = component.GetComponent(newType);
-                    if (newComponent != null) {
-                        valueProp.objectReferenceValue = newComponent;
-                    }
+                    if (newComponent != null) valueProp.objectReferenceValue = newComponent;
                 }
             }
         }

@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace iCare.Di.LoopSystem {
-    [Service(typeof(ICoroutineManager))]
+namespace iCare.Di {
+    [Service(typeof(ICoroutineManager), true)]
     internal sealed class LoopProvider : MonoBehaviour, ICoroutineManager {
+        int _awakeCount;
+        IListenAwake[] _awakeListeners = new IListenAwake[64];
+        HashSet<IListenAwake> _awakeSet = new();
         int _destroyCount;
-        IListenDestroy[] _destroyListeners = new IListenDestroy[64];
-        HashSet<IListenDestroy> _destroySet = new();
+        IListenOnDestroy[] _destroyListeners = new IListenOnDestroy[64];
+        HashSet<IListenOnDestroy> _destroySet = new();
         int _fixedTickCount;
 
         IListenFixedTick[] _fixedTickListeners = new IListenFixedTick[64];
@@ -34,16 +37,13 @@ namespace iCare.Di.LoopSystem {
 
         public static LoopProvider Instance { get; private set; }
 
+
         void Awake() {
-            if (Instance != null) {
-                Debug.LogWarning("LoopProvider already exists. Destroying duplicate.");
-                Destroy(gameObject);
-                return;
-            }
+            for (var i = 0; i < _awakeCount; i++)
+                _awakeListeners[i].OnLoopAwake();
 
-
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            _awakeListeners = null;
+            _awakeSet = null;
 
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
@@ -51,6 +51,9 @@ namespace iCare.Di.LoopSystem {
         void Start() {
             for (var i = 0; i < _startCount; i++)
                 _startListeners[i].OnLoopStart();
+
+            _startListeners = null;
+            _startSet = null;
         }
 
         void Update() {
@@ -71,11 +74,17 @@ namespace iCare.Di.LoopSystem {
         void OnEnable() {
             for (var i = 0; i < _onEnableCount; i++)
                 _onEnableListeners[i].OnLoopEnable();
+
+            _onEnableListeners = null;
+            _onEnableSet = null;
         }
 
         void OnDisable() {
             for (var i = 0; i < _onDisableCount; i++)
                 _onDisableListeners[i].OnLoopDisable();
+
+            _onDisableListeners = null;
+            _onDisableSet = null;
         }
 
         void OnDestroy() {
@@ -83,6 +92,17 @@ namespace iCare.Di.LoopSystem {
                 _destroyListeners[i].OnLoopDestroy();
 
             SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        internal static void Create() {
+            var obj = new GameObject("LoopProvider");
+            obj.SetActive(false);
+            var provider = obj.AddComponent<LoopProvider>();
+            Instance = provider;
+        }
+
+        internal static void Activate() {
+            Instance.gameObject.SetActive(true);
         }
 
         void OnSceneLoaded(Scene arg0, LoadSceneMode arg1) {
@@ -118,62 +138,44 @@ namespace iCare.Di.LoopSystem {
         }
 
 
-        public void TryRegister(object instance) {
-            switch (instance) {
-                case IListenTick tick:
-                    InternalRegister(tick, ref _tickListeners, ref _tickSet, ref _tickCount);
-                    break;
-                case IListenOnEnable onEnable:
-                    InternalRegister(onEnable, ref _onEnableListeners, ref _onEnableSet, ref _onEnableCount);
-                    break;
-                case IListenStart start:
-                    InternalRegister(start, ref _startListeners, ref _startSet, ref _startCount);
-                    break;
-                case IListenFixedTick fixedTick:
-                    InternalRegister(fixedTick, ref _fixedTickListeners, ref _fixedTickSet, ref _fixedTickCount);
-                    break;
-                case IListenLateTick lateTick:
-                    InternalRegister(lateTick, ref _lateTickListeners, ref _lateTickSet, ref _lateTickCount);
-                    break;
-                case IListenDestroy destroy:
-                    InternalRegister(destroy, ref _destroyListeners, ref _destroySet, ref _destroyCount);
-                    break;
-                case IListenOnDisable onDisable:
-                    InternalRegister(onDisable, ref _onDisableListeners, ref _onDisableSet, ref _onDisableCount);
-                    break;
-                case IListenSceneLoad sceneLoad:
-                    InternalRegister(sceneLoad, ref _sceneLoadListeners, ref _sceneLoadSet, ref _sceneLoadCount);
-                    break;
-            }
+        public void AddLoopListener(object instance) {
+            if (instance is IListenTick tick)
+                InternalRegister(tick, ref _tickListeners, ref _tickSet, ref _tickCount);
+            if (instance is IListenOnEnable onEnable)
+                InternalRegister(onEnable, ref _onEnableListeners, ref _onEnableSet, ref _onEnableCount);
+            if (instance is IListenStart start)
+                InternalRegister(start, ref _startListeners, ref _startSet, ref _startCount);
+            if (instance is IListenFixedTick fixedTick)
+                InternalRegister(fixedTick, ref _fixedTickListeners, ref _fixedTickSet, ref _fixedTickCount);
+            if (instance is IListenLateTick lateTick)
+                InternalRegister(lateTick, ref _lateTickListeners, ref _lateTickSet, ref _lateTickCount);
+            if (instance is IListenOnDestroy destroy)
+                InternalRegister(destroy, ref _destroyListeners, ref _destroySet, ref _destroyCount);
+            if (instance is IListenOnDisable onDisable)
+                InternalRegister(onDisable, ref _onDisableListeners, ref _onDisableSet, ref _onDisableCount);
+            if (instance is IListenSceneLoad sceneLoad)
+                InternalRegister(sceneLoad, ref _sceneLoadListeners, ref _sceneLoadSet, ref _sceneLoadCount);
+            if (instance is IListenAwake awake) InternalRegister(awake, ref _awakeListeners, ref _awakeSet, ref _awakeCount);
         }
 
-        public void TryUnregister(object instance) {
-            switch (instance) {
-                case IListenTick tick:
-                    InternalUnregister(tick, ref _tickListeners, ref _tickSet, ref _tickCount);
-                    break;
-                case IListenOnEnable onEnable:
-                    InternalUnregister(onEnable, ref _onEnableListeners, ref _onEnableSet, ref _onEnableCount);
-                    break;
-                case IListenStart start:
-                    InternalRegister(start, ref _startListeners, ref _startSet, ref _startCount);
-                    break;
-                case IListenFixedTick fixedTick:
-                    InternalUnregister(fixedTick, ref _fixedTickListeners, ref _fixedTickSet, ref _fixedTickCount);
-                    break;
-                case IListenLateTick lateTick:
-                    InternalUnregister(lateTick, ref _lateTickListeners, ref _lateTickSet, ref _lateTickCount);
-                    break;
-                case IListenDestroy destroy:
-                    InternalUnregister(destroy, ref _destroyListeners, ref _destroySet, ref _destroyCount);
-                    break;
-                case IListenOnDisable onDisable:
-                    InternalUnregister(onDisable, ref _onDisableListeners, ref _onDisableSet, ref _onDisableCount);
-                    break;
-                case IListenSceneLoad sceneLoad:
-                    InternalUnregister(sceneLoad, ref _sceneLoadListeners, ref _sceneLoadSet, ref _sceneLoadCount);
-                    break;
-            }
+        public void RemoveLoopListener(object instance) {
+            if (instance is IListenTick tick)
+                InternalUnregister(tick, ref _tickListeners, ref _tickSet, ref _tickCount);
+            if (instance is IListenOnEnable onEnable)
+                InternalUnregister(onEnable, ref _onEnableListeners, ref _onEnableSet, ref _onEnableCount);
+            if (instance is IListenStart start)
+                InternalRegister(start, ref _startListeners, ref _startSet, ref _startCount);
+            if (instance is IListenFixedTick fixedTick)
+                InternalUnregister(fixedTick, ref _fixedTickListeners, ref _fixedTickSet, ref _fixedTickCount);
+            if (instance is IListenLateTick lateTick)
+                InternalUnregister(lateTick, ref _lateTickListeners, ref _lateTickSet, ref _lateTickCount);
+            if (instance is IListenOnDestroy destroy)
+                InternalUnregister(destroy, ref _destroyListeners, ref _destroySet, ref _destroyCount);
+            if (instance is IListenOnDisable onDisable)
+                InternalUnregister(onDisable, ref _onDisableListeners, ref _onDisableSet, ref _onDisableCount);
+            if (instance is IListenSceneLoad sceneLoad)
+                InternalUnregister(sceneLoad, ref _sceneLoadListeners, ref _sceneLoadSet, ref _sceneLoadCount);
+            if (instance is IListenAwake awake) InternalUnregister(awake, ref _awakeListeners, ref _awakeSet, ref _awakeCount);
         }
     }
 }

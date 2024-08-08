@@ -1,3 +1,4 @@
 {
-	"name": "iCare"
+  "name": "iCare",
+  "references":[ "GUID:8315998c0cb72d74dba88ca52a7b7090" ]
 }

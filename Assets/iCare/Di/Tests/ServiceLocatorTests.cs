@@ -3,8 +3,6 @@ using UnityEngine;
 
 namespace iCare.Di.Tests {
     public sealed class ServiceLocatorTests {
-        sealed class TestMonoBehaviour : MonoBehaviour { }
-
         MonoContainer _container;
         TestMonoBehaviour _testMonoBehaviour;
         GameObject _testObject;
@@ -54,5 +52,6 @@ namespace iCare.Di.Tests {
             Assert.IsTrue(ServiceLocator.ForSceneOf(_testMonoBehaviour) == container);
         }
 
+        sealed class TestMonoBehaviour : MonoBehaviour { }
     }
 }

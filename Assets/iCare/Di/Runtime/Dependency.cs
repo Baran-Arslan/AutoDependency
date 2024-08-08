@@ -15,9 +15,7 @@ namespace iCare.Di {
         [SerializeField] T manualValue;
 
         internal T Resolve(MonoBehaviour mono) {
-            if (isManual) {
-                return manualValue;
-            }
+            if (isManual) return manualValue;
 
             return from switch {
                 DependencyFrom.FromGlobal => ServiceLocator.Global.Resolve<T>(),

@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Runtime.CompilerServices;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("iCare.Editor")]
+[assembly: InternalsVisibleTo("iCare.Editor")]
 
 namespace iCare.Di {
-    [System.Serializable]
+    [Serializable]
     internal sealed class ObjectService {
         [SerializeField] Object value;
         [SerializeField] string serviceType;

@@ -2,55 +2,46 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace iCare.Di.LoopSystem
-{
-    public interface IListenLoop
-    {
-        
+namespace iCare.Di {
+    public interface IListenLoop : IDependencyEntity { }
+
+    public interface IListenAwake : IListenLoop {
+        void OnLoopAwake();
     }
-    
-    public interface IListenTick : IListenLoop
-    {
+
+    public interface IListenTick : IListenLoop {
         void OnLoopTick();
     }
 
-    public interface IListenOnEnable : IListenLoop
-    {
+    public interface IListenOnEnable : IListenLoop {
         void OnLoopEnable();
     }
 
-    public interface IListenStart : IListenLoop
-    {
+    public interface IListenStart : IListenLoop {
         void OnLoopStart();
     }
 
-    public interface IListenFixedTick : IListenLoop
-    {
+    public interface IListenFixedTick : IListenLoop {
         void OnLoopFixedTick();
     }
 
-    public interface IListenLateTick : IListenLoop
-    {
+    public interface IListenLateTick : IListenLoop {
         void OnLoopLateTick();
     }
 
-    public interface IListenDestroy : IListenLoop
-    {
+    public interface IListenOnDestroy : IListenLoop {
         void OnLoopDestroy();
     }
 
-    public interface IListenOnDisable : IListenLoop
-    {
+    public interface IListenOnDisable : IListenLoop {
         void OnLoopDisable();
     }
 
-    public interface IListenSceneLoad : IListenLoop
-    {
+    public interface IListenSceneLoad : IListenLoop {
         void OnSceneLoad(Scene scene, LoadSceneMode mode);
     }
 
-    public interface ICoroutineManager
-    {
+    public interface ICoroutineManager {
         Coroutine StartCoroutine(IEnumerator routine);
         void StopCoroutine(Coroutine coroutine);
         void StopAllCoroutines();
